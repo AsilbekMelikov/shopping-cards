@@ -112,7 +112,7 @@ const Shop = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3000/weapons')
+        fetch('https://weapon-datas.onrender.com/weapons')
             .then(response => response.json())
             .then(data => setGoods(data))
 
