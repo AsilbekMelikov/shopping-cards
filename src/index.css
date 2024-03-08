@@ -1,13 +1,125 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+nav {
+  padding: 0 1rem;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.content {
+  min-height: calc(100vh - 70px - 64px);
+  padding: 1.5rem 0;
+}
+.goods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-image img {
+  height: 190px;
+  object-fit: contain;
+}
+
+.card-content {
+  flex-grow: 1;
+}
+.card-content .card-title {
+  font-size: 23px;
+  font-weight: 700;
+}
+.card-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cart {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  cursor: pointer;
+  z-index: 5;
+  padding: 1rem;
+}
+.basket-modal {
+  position: fixed;
+  background: rgba(0, 0, 0, .5);
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+
+}
+.basket-lists {
+  width: 50rem;
+  max-width: 95%;
+  animation: show .5s ease-in-out;
+}
+.basket-close {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  cursor: pointer;
+  color: #fff;
+}
+.basket-delete {
+  cursor: pointer;
+}
+.basket-add, .basket-remove {
+  cursor: pointer;
+  margin-right: 10px;
+}
+.initial-button {
+  padding: 0 30px;
+}
+.container-button {
+  display: flex;
+  align-items: center;
+}
+.item-remove, .item-add {
+  background: none;
+  display: flex;
+  align-items: center;
+  border: 0;
+  outline: 0;
+  height: 60%;
+  color: #fff;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+  margin-right: 10px;
+}
+.item-remove:hover {
+  background: #26a69a;
+}
+.item-remove {
+  margin-right: 0;
+  margin-left: 10px;
+}
+.item-add:hover {
+  background: #26a69a;
+}
+
+@keyframes show {
+  from {
+    top: -30%;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 767px){
+  .cart {
+    right: 5rem;
+    bottom: unset;
+
+  }
+
 }
