@@ -9,6 +9,9 @@ function ChangeButton(props) {
             if (orderItem.id === id) {
                 return orderItem.quantity
             }
+            else {
+                return 0
+            }
         })
 
     return (

@@ -49,7 +49,7 @@ const Shop = () => {
     }
 
     const removeFromBasket = (itemId) => {
-        toast.error('Goods deleted from baskets successfully')
+        toast.error('Goods deleted from baskets completely')
 
         const newOrder = order.filter(orderItem => orderItem.id !== itemId)
         return setOrder(newOrder)
@@ -74,16 +74,18 @@ const Shop = () => {
     }
 
     const decrementQuantity = (itemId) => {
-        toast.warn('The number of goods reduced')
+
 
          order.map(orderItem  => {
              if (orderItem.id === itemId) {
                  const newQuantity = orderItem.quantity - 1
 
                 if (newQuantity > 0) {
+                    toast.warn('The number of goods reduced')
                    return setOrder([{...orderItem, quantity: newQuantity}])
                 }
                 else {
+                    toast.error('Goods deleted from baskets completely')
                     const deletedItem = order.filter(orderItem => orderItem.id !== itemId)
                   return setOrder(deletedItem)
                 }
@@ -116,20 +118,6 @@ const Shop = () => {
 
         setLoading(false)
     }, []);
-
-
-    // useEffect(() => {
-    //     fetch(API_URL, {
-    //         headers: {
-    //             'Authorization': API_KEY
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => data.shop && setGoods(data.shop))
-    //
-    //     setLoading(false)
-    // }, []);
-
 
     return (
         <div className='container content'>

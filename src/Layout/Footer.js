@@ -5,7 +5,7 @@ const Footer = () => {
             <div className="footer-copyright">
                 <div className="container">
                     © {new Date().getFullYear()} Copyright Text
-                    <a className="grey-text text-lighten-4 right" href="#">REPO</a>
+                    <a className="grey-text text-lighten-4 right" href="/public/index.html">REPO</a>
                 </div>
             </div>
         </footer>
