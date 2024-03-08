@@ -10,7 +10,7 @@ function ChangeButton(props) {
                 return orderItem.quantity
             }
             else {
-                return 0
+                return ''
             }
         })
 

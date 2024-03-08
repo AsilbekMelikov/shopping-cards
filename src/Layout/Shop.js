@@ -25,7 +25,7 @@ const Shop = () => {
                 quantity: 1
             }
 
-            setOrder([...order, newItem])
+           return setOrder([...order, newItem])
 
         }
         else {
@@ -70,31 +70,54 @@ const Shop = () => {
                 return orderItem
             }
         })
-        setOrder(newOrder)
+        return setOrder(newOrder)
     }
 
     const decrementQuantity = (itemId) => {
+        const newOrder = order.map(orderItem => {
+            if (orderItem.id === itemId) {
+              const newQuantity = orderItem.quantity - 1
+
+               if (newQuantity > 0) {
+                   toast.warn('The number of goods reduced')
+                   return {
+                       ...orderItem,
+                       quantity: newQuantity
+                   }
+               }
+               else {
+                    return orderItem
+               }
+            }
+            else {
+                return orderItem
+            }
+        })
+        return setOrder(newOrder)
 
 
-         order.map(orderItem  => {
-             if (orderItem.id === itemId) {
-                 const newQuantity = orderItem.quantity - 1
 
-                if (newQuantity > 0) {
-                    toast.warn('The number of goods reduced')
-                   return setOrder([{...orderItem, quantity: newQuantity}])
-                }
-                else {
-                    toast.error('Goods deleted from baskets completely')
-                    const deletedItem = order.filter(orderItem => orderItem.id !== itemId)
-                  return setOrder(deletedItem)
-                }
-
-             }
-             else {
-                 return setOrder(orderItem)
-             }
-         })
+         // order.map(orderItem  => {
+         //     if (orderItem.id === itemId) {
+         //         const newQuantity = orderItem.quantity - 1
+         //
+         //        if (newQuantity > 0) {
+         //            toast.warn('The number of goods reduced')
+         //            const removedEl = order.filter(orderItem => orderItem.id !== itemId)
+         //           return  setOrder([...removedEl , {...orderItem, quantity: newQuantity}])
+         //        }
+         //        else {
+         //            toast.error('Goods deleted from baskets completely')
+         //            const deletedItem =  order.filter(orderItem => orderItem.id !== itemId)
+         //            return setOrder(deletedItem)
+         //        }
+         //
+         //
+         //     }
+         //     else {
+         //         return setOrder(orderItem)
+         //     }
+         // })
     }
 
 
