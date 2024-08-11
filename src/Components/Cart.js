@@ -1,6 +1,11 @@
+import {useContext} from "react";
+import {shoppingContext} from "./ShopContext";
 
-const Cart = (props) => {
-    const {quantity = 0, handleBasketShow = Function.prototype} = props
+const Cart = () => {
+
+    const {order, handleBasketShow = Function.prototype} = useContext(shoppingContext)
+    let quantity = order.length
+
     return (
         <div className='cart blue darken-4 white-text' onClick={handleBasketShow}>
             <i className="material-icons">add_shopping_cart</i>

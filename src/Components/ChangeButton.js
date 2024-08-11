@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {shoppingContext} from "./ShopContext";
 
 function ChangeButton(props) {
-    const {addToBasket, id, name, price, order, incrementQuantity, decrementQuantity} = props
+    const {id, name, price} = props
+
+    const {order, addToBasket, incrementQuantity, decrementQuantity} = useContext(shoppingContext)
 
     const itemIndex = order.findIndex(orderItem => orderItem.id === id)
 

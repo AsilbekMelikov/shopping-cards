@@ -1,8 +1,11 @@
 import BasketModalItem from "./BasketModalItem";
+import {useContext} from "react";
+import {shoppingContext} from "./ShopContext";
 
 
-const BasketModal = (props) => {
-    const {order, handleBasketShow, removeFromBasket, incrementQuantity, decrementQuantity} = props
+const BasketModal = () => {
+
+    const {order, handleBasketShow} = useContext(shoppingContext)
 
     const totalCost = order.reduce((total, item) => {
         return total + item.price * item.quantity
@@ -16,9 +19,6 @@ const BasketModal = (props) => {
                     Basket
                 </li>
                 {order.length ? order.map(item => <BasketModalItem key ={item.id} {...item} {...item.stats}
-                                                                   removeFromBasket = {removeFromBasket}
-                                                                   incrementQuantity = {incrementQuantity}
-                                                                   decrementQuantity = {decrementQuantity}
                     />)
                     : <li className='collection-item'>Basket is empty</li>}
                 <li className='collection-item active'>Total cost: {totalCost} <b>$</b> </li>

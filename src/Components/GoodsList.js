@@ -1,25 +1,22 @@
 import GoodsItem from "./GoodsItem";
+import {useContext} from "react";
+import {shoppingContext} from "./ShopContext";
 
-const GoodsList = (props) => {
-    const {goods =[], addToBasket, order, incrementQuantity, decrementQuantity} = props
+const GoodsList = () => {
+
+    const {goods = []} = useContext(shoppingContext)
 
     if (!goods) {
         return (
             <h1>Nothing found here</h1>
         )
     }
-
-
     return (
         <div className='goods'>
             {goods.map(item => <GoodsItem
                 key={item.id}
                 {...item}
                 {...item.stats}
-                addToBasket={addToBasket}
-                order = {order}
-                incrementQuantity = {incrementQuantity}
-                decrementQuantity = {decrementQuantity}
             />)}
         </div>
     )
